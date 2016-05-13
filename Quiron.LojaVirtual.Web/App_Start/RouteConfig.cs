@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Quiron.LojaVirtual.Web
@@ -13,18 +9,56 @@ namespace Quiron.LojaVirtual.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Primeira pagina exibida - first route
+            routes.MapRoute(null,
+               "",
+               new
+               {
+                   controller = "Vitrine"
+               ,
+                   action = "ListaProdutos"
+               ,
+                   categoria = (string)null
+               ,
+                   pagina = 1
+               }
+               );
 
-            routes.MapRoute(
-                name: null,
-                url: "Pagina{pagina}",
-                defaults: new { controller = "Vitrine", action = "ListaProdutos" }
-                );
+            // second Route
+            routes.MapRoute(null,
+                "Pagina{pagina}",
+                new
+                {
+                    controller = "Vitrine",
+                    Action = "ListaProdutos",
+                    categoria = (string)null
+                },
+                new { pagina = @"\d+" });
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+
+            // terceira  route for put the url categoria 
+            routes.MapRoute(null, "{categoria}",
+                new
+                {
+                    controller = "Vitrine",
+                    action = "ListaProdutos",
+                    pagina = 1
+                });
+
+            //quarta Route
+            routes.MapRoute(null,
+                "{categoria}Pagina{pagina}",
+                new
+                {
+                    controller = "Vitrine",
+                    Action = "ListaProdutos"
+                },
+                new { pagina = @"\d+" });
+
+
+            routes.MapRoute(null, "{controller}/{action}");
+
+
         }
     }
 }
