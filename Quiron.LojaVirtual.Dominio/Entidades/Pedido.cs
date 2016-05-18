@@ -40,7 +40,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidades
         [EmailAddress(ErrorMessage = "Email Inválido")]
         public string Email { get; set; }
 
-       public bool EmbrulhaPresente { get; set; }
+        public bool EmbrulhaPresente { get; set; }
 
     }
 }
