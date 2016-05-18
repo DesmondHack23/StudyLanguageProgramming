@@ -2,31 +2,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title Quiron Loja Virtual</title>
-
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-       <a class="navbar-brand" href="#">Quiron Loja Virtual  - Seu Esporte é Aqui</a>
+
+    <div class="navbar navbar-inverse" role="navigation">
+        <a class="navbar-brand" href="#">Quiron Loja Virtual - Seu esporte é aqui </a>
+
+       
+            @Html.Action("Resumo", "Carrinho")
+        
     </div>
     <div class="row panel">
-        <div id="categoria" class="col-xs-3">
+        <div id="categorias" class="col-xs-3">
             @Html.Action("Menu", "Categoria")
         </div>
 
-        <div id="categoria" class="col-xs-8">
+
+        <div id="categorias" class="col-xs-8">
             @RenderBody()
         </div>
     </div>
 
+
+
+    <footer style="text-align: center; color: black">
+
+        <a href="https://wwww.boadica.com" target="_blank"> <img src="../../imgs/imagen-boadica-0big.jpg.png" alt="Logo do Mercado Livre" /></a>
+        <a href="https://wwww.facebook.com" target="_blank"> <img src="../../imgs/logo-facebook.png" alt="Logo da Pagina no Facebook" /></a>
+        <a href="#" target="_blank"> <img src="../../imgs/oabutton_logo_final200.png" alt="Logo Teste" /></a>
+        <style>
+            img {
+                width: 50px;
+                height: 45px;
+            }
+        </style>
+
+        <br>
+        &copy; 2016 - 2017 Dev by Alexandre
+    </footer>
 </body>
 </html>
