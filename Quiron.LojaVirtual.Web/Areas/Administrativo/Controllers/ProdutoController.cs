@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Quiron.LojaVirtual.Dominio.Entidades;
 using Quiron.LojaVirtual.Dominio.Repositorio;
 
@@ -10,21 +8,16 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
 {
     public class ProdutoController : Controller
     {
-       private ProdutosRepositorio _repositorio;
+        private ProdutosRepositorio _repositorio;
+
         public ActionResult Index()
         {
-
             _repositorio = new ProdutosRepositorio();
-
             var produtos = _repositorio.Produtos;
             return View(produtos);
         }
 
-        public ActionResult NovoProduto(string @class)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public ViewResult Alterar(int produtoId)
         {
             _repositorio = new ProdutosRepositorio();
@@ -34,9 +27,33 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
             return View(produto);
         }
 
+
+
+        [HttpPost]
+        public ActionResult Alterar(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                _repositorio = new ProdutosRepositorio();
+                _repositorio.Save(produto);
+
+                TempData["mensagem"] = string.Format("{0} foi salvo com sucesso", produto.Nome);
+
+                return RedirectToAction("Index");
+
+            }
+            return View(produto);
+        }
+
+
+        public ActionResult NovoProduto(string s)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public ActionResult Excluir()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }
