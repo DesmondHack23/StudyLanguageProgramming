@@ -23,17 +23,17 @@ namespace Quiron.LojaVirtual.Dominio.Entidades
         [Display(Name = "Complemento:")]
         public string Complemento { get; set; }
 
-        [Required(ErrorMessage = "Informe o seu estado")]
-        [Display(Name = "Estado:")]
-        public string Estado { get; set; }
+        [Required(ErrorMessage = "Informe o seu bairro")]
+        [Display(Name = "Bairro:")]
+        public string Bairro { get; set; }
 
         [Required(ErrorMessage = "Informe a sua cidade")]
         [Display(Name = "Cidade:")]
         public string Cidade { get; set; }
 
-        [Required(ErrorMessage = "Informe o seu bairro")]
-        [Display(Name = "Bairro:")]
-        public string Bairro { get; set; }
+        [Required(ErrorMessage = "Informe o seu estado")]
+        [Display(Name = "Estado:")]
+        public string Estado { get; set; }
 
         [Required(ErrorMessage = "Informe o seu e-mail")]
         [Display(Name = "E-mail:")]
